@@ -8,28 +8,20 @@ const operatorButtons = document.querySelectorAll(".operator")
 
 numberButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        if (operator === "") {
+        if (operatorButtons === "") {
             firstNumber += button.textContent
+            display.textContent = firstNumber
         } else {
             secondNumber += button.textContent
+            display.textContent = secondNumber
         }
-        writeDisplay()
     })
 })
 
-const operate = function () {
+/* const operate = function () {
     
-    console.table(operator)
-}
+    console.table(operator) 
+} */
 
 let display = document.querySelector('.output-field')
-let operator = [add(), subtract(), multiply(), divide()]
 
-const writeDisplay = function () {
-    if (operator === "") {
-        display.textContent = firstNumber
-    } else {    
-        display.textContent = secondNumber
-    }
-
-}
