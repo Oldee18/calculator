@@ -5,12 +5,11 @@ const equalsButton = document.querySelector(".equals")
 const clearButton = document.querySelector(".clear")
 const deleteButton = document.querySelector(".delete")
 const operatorButtons = document.querySelectorAll(".operator")
+let display = document.querySelector('.output-field')
 
 operatorButtons.forEach((operatorBtn) => {
     operatorBtn.addEventListener("click", () => {
-        if (operatorBtn != "") {
             display.textContent = ""
-        }
     })
 }) 
 
@@ -21,17 +20,13 @@ numberButtons.forEach((numberBtn) => {
         if (operatorButtons === "") {
             firstNumber += numberBtn.textContent
             display.textContent = firstNumber
-            console.log(firstNumber)
-        } else if (operatorButtons != "") {
+        } else 
             secondNumber += numberBtn.textContent
             display.textContent = secondNumber
-            console.log(secondNumber)
-        }
-    })
+        })
 })
 
 
-let display = document.querySelector('.output-field')
 
 console.log(operatorButtons)
 console.log(numberButtons)
