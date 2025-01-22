@@ -1,54 +1,67 @@
 let firstNumber = 0
 let secondNumber = 0
+let sum = 0
+let pressedOpBtn = ""
 
 const add = function () {
-	console.log(firstNumber + secondNumber)
+	display.textContent = firstNumber + secondNumber
 }
 
 const subtract = function () {
-	console.log(firstNumber - secondNumber)
+	display.textContent= firstNumber - secondNumber
 }
 
 const multiply = function () {
-	console.log(firstNumber * secondNumber)
+	display.textContent = firstNumber * secondNumber
 }
 
 const divide = function () {
-	console.log(firstNumber / secondNumber)
+	display.textContent = firstNumber / secondNumber
 }
 
 const numberButtons = document.querySelectorAll(".number")
 const display = document.querySelector(".output-field")
 const operatorButtons = document.querySelectorAll(".operator")
+const equals = document.querySelector("#equals")
 
 const operate = function () {
-	let num1 = +prompt("What is your first number?")
-	let num2 = +prompt("What is your second number?")
-	let operator = prompt("What operation do you want to finish? Add, Subtract, Multiply, Divide")
-		firstNumber += num1
-		secondNumber += num2
-			if (operator === "Add") {			
-				add()
-			} else if (operator === "Subtract") {
-				subtract()
-			} else if (operator === "Multiply") {
-				multiply()
-			} else if (operator === "Divide") {
-				divide()
-			} else 
-				alert("Bad operator choice. Please choose a valid operator!")
+	equals.addEventListener("click", () => {
+		if (pressedOpBtn === "+") {
+			add()
+		} else if (pressedOpBtn === "-") {
+			subtract()
+		} else if (pressedOpBtn === "*") {
+			multiply()
+		} else if (pressedOpBtn === "/") {
+			divide()
+		}
+	})
+	
 }
+operatorButtons.forEach((operatorBtn) => {
+	operatorBtn.addEventListener("click", () => {
+		pressedOpBtn = operatorBtn
+		display.textContent = ""
+	})
+})
+
+
+
 console.log(numberButtons)
 console.log(operatorButtons)
 const displayPopulate = function () {
 	numberButtons.forEach((numberBtn) => {
+		display.textContent = ""
 		numberBtn.addEventListener("click", () => {
-			display.textContent += numberBtn.textContent
-			firstNumber += numberBtn.textContent
+			if (pressedOpBtn === "") {
+				display.textContent += numberBtn.textContent
+				firstNumber = display.textContent
+			} else if (pressedOpBtn != "") {
+				display.textContent += numberBtn.textContent
+				secondNumber = display.textContent
+			}
 		})
-		
 	})
 }
-
 
 displayPopulate()
