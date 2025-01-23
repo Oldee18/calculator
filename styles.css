@@ -1,0 +1,43 @@
+body {
+    max-width: 600px;
+    margin: 50px auto;
+    display: flex;
+}
+
+.output-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.output-field {
+    width: 100px;
+    height: 50px;
+    flex: 1;
+}
+
+.input-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-input {
+    flex-direction: column;
+    flex: 1;
+    max-width: 200px;
+}
+
+.number, #clear {
+    width: 50px;
+    height: 50px;
+    flex: 1;
+}
+
+#clear {
+    width: 160px;
+}
+
+#zero {
+    width: 160px;
+}
