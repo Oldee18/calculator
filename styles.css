@@ -34,10 +34,18 @@ body {
     flex: 1;
 }
 
+.number {
+    margin-top: 5px;
+    background-color: aqua;
+}
+
 #clear {
     width: 160px;
+    background-color: yellowgreen;
+    margin-top: 3rem;
 }
 
 #zero {
     width: 160px;
+    background-color: aquamarine;
 }

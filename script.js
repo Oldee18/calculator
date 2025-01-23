@@ -25,6 +25,7 @@ const numberButtons = document.querySelectorAll(".number")
 const display = document.querySelector(".output-field")
 const operatorButtons = document.querySelectorAll(".operator")
 const equals = document.querySelector("#equals")
+const clear = document.querySelector("#clear")
 
 const operate = function () {
 	if ("+" === operation) {
@@ -43,7 +44,6 @@ const operate = function () {
 }
 equals.addEventListener("click", () => {
 	operate()
-
 })
 
 operatorButtons.forEach((operatorBtn) => {
@@ -60,12 +60,16 @@ operatorButtons.forEach((operatorBtn) => {
 const displayPopulate = function () {
 	numberButtons.forEach((numberBtn) => {
 		display.textContent = ""
-		numberBtn.addEventListener("click", () => {
-			
-			display.textContent += numberBtn.textContent
-			
+		numberBtn.addEventListener("click", () => {			
+			display.textContent += numberBtn.textContent			
 		})
 	})
 }
+
+clear.addEventListener("click", () => {
+	firstNumber = 0
+	operation = ""
+	display.textContent = ""
+})
 
 displayPopulate()
