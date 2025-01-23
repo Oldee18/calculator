@@ -1,21 +1,24 @@
 let firstNumber = 0
-let secondNumber = 0
-let pressedOpBtn = {}
+let operation = ""
+
+const getNumber = function () {
+	return +display.textContent
+}
 
 const add = function () {
-	display.textContent = +firstNumber + +secondNumber
+	firstNumber = +firstNumber + getNumber()
 }
 
 const subtract = function () {
-	display.textContent= +firstNumber - +secondNumber
+	firstNumber = +firstNumber - getNumber()
 }
 
 const multiply = function () {
-	display.textContent = +firstNumber * +secondNumber
+	firstNumber = +firstNumber * getNumber()
 }
 
 const divide = function () {
-	display.textContent = +firstNumber / +secondNumber
+	firstNumber = +firstNumber / getNumber()
 }
 
 const numberButtons = document.querySelectorAll(".number")
@@ -24,22 +27,32 @@ const operatorButtons = document.querySelectorAll(".operator")
 const equals = document.querySelector("#equals")
 
 const operate = function () {
-	equals.addEventListener("click", () => {
-		if ("add" in pressedOpBtn) {
-			add()
-		} else if ("subtract" in pressedOpBtn) {
-			subtract()
-		} else if ("multiply" in pressedOpBtn) {
-			multiply()
-		} else if ("divide" in pressedOpBtn) {
-			divide()
-		}
-	})
+	if ("+" === operation) {
+		add()
+	} else if ("-" === operation) {
+		subtract()
+	} else if ("*" === operation) {
+		multiply()
+	} else if ("/" === operation) {
+		divide()
+	} else {
+		alert("Ember")
+	}
 	
+	display.textContent = firstNumber
 }
+equals.addEventListener("click", () => {
+	operate()
+
+})
+
 operatorButtons.forEach((operatorBtn) => {
 	operatorBtn.addEventListener("click", () => {
-		pressedOpBtn = operatorBtn
+		operation = operatorBtn.innerHTML
+		if (firstNumber !== 0 ) {
+			operate()
+		}
+		firstNumber = display.textContent
 		display.textContent = ""
 	})
 })
@@ -48,13 +61,9 @@ const displayPopulate = function () {
 	numberButtons.forEach((numberBtn) => {
 		display.textContent = ""
 		numberBtn.addEventListener("click", () => {
-			if (pressedOpBtn === "") {
-				display.textContent += numberBtn.textContent
-				firstNumber = display.textContent
-			} else if (pressedOpBtn != "") {
-				display.textContent += numberBtn.textContent
-				secondNumber = display.textContent
-			}
+			
+			display.textContent += numberBtn.textContent
+			
 		})
 	})
 }
